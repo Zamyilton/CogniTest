@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 235 30% 14%;
+    --foreground: 195 67% 95%;
+    --card: 235 30% 14%;
+    --card-foreground: 195 67% 95%;
+    --popover: 235 30% 14%;
+    --popover-foreground: 195 67% 95%;
+    --primary: 276 92% 37%;
+    --primary-foreground: 195 67% 95%;
+    --secondary: 214 26% 33%;
+    --secondary-foreground: 195 67% 95%;
+    --muted: 214 26% 33%;
+    --muted-foreground: 220 14% 42%;
+    --accent: 276 92% 37%;
+    --accent-foreground: 195 67% 95%;
+    --destructive: 320 82% 41%;
+    --destructive-foreground: 195 67% 95%;
+    --border: 214 26% 33%;
+    --input: 214 26% 33%;
+    --ring: 276 92% 37%;
+    --radius: 0.75rem;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: #1D1E2C;
+    color: #EDF6F9;
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  code, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer components {
+  .geometric-bg {
+    position: relative;
+    background-color: #1D1E2C;
+  }
+
+  .geometric-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(184, 208, 235, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(184, 208, 235, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    animation: gridDrift 120s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .geometric-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(114, 9, 183, 0.06) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .glass-card {
+    background: rgba(237, 246, 249, 0.03);
+    border: 1px solid rgba(184, 208, 235, 0.12);
+    backdrop-filter: blur(8px);
+  }
+
+  .glass-nav {
+    background: rgba(29, 30, 44, 0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(184, 208, 235, 0.1);
+  }
+
+  .test-card-iq {
+    border-color: rgba(114, 9, 183, 0.2);
+  }
+  .test-card-iq:hover {
+    border-color: rgba(114, 9, 183, 0.8);
+    box-shadow: 0 12px 40px rgba(114, 9, 183, 0.15);
+  }
+
+  .test-card-eq {
+    border-color: rgba(181, 23, 158, 0.2);
+  }
+  .test-card-eq:hover {
+    border-color: rgba(181, 23, 158, 0.8);
+    box-shadow: 0 12px 40px rgba(181, 23, 158, 0.15);
+  }
+
+  .test-card-sq {
+    border-color: rgba(247, 37, 133, 0.2);
+  }
+  .test-card-sq:hover {
+    border-color: rgba(247, 37, 133, 0.8);
+    box-shadow: 0 12px 40px rgba(247, 37, 133, 0.15);
+  }
+}
+
+@keyframes gridDrift {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 60px 60px;
+  }
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes timer-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 2s ease-in-out infinite;
+}
+
+.animate-timer-pulse {
+  animation: timer-pulse 1s ease-in-out infinite;
+}
